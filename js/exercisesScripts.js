@@ -36,19 +36,31 @@ function handleMetadataSubmit()
        // console.log(userInputs[item]["input"]);
         if(userInputs[item]["id"]==="figureInputMeta" && userInputs[item]["input"]==='')
         {
-            console.log("Invalid input");
+            writeToStatusEx("Invalid input");
             return false;
         }
         if(userInputs[item]["id"]==="title" && userInputs[item]["input"]==='')
         {
-            console.log("Invalid input");
+            writeToStatusEx("Invalid input");
             return false;
         }      
     }
     //console.log(userInputs);
+    writeToStatusEx("Input Accepted");
     transmitMetadataInputs(userInputs);
+    for(let i=0;i<ids.length;i++)
+    {
+        let thisId=ids[i];
+        document.getElementById(thisId).value='';
+       
+    }
 }
 
+
+function writeToStatusEx(message)
+{
+    document.getElementById("metadataStatusIndicator").innerHTML=message;
+}
 
 function transmitMetadataInputs(userInputs)
 {
