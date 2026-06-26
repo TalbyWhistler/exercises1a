@@ -47,6 +47,10 @@
         .$statusIndicatorBox;
     
     $metadataInputPanel=createElement('div','metadataInputPanel','inputPanel',$metadataInputPanelContents);
+
+
+    $buttonOutputArea=createElement('p','buttonOutputArea','outputArea','');
+    $buttonAreaContainer=createElement('div','buttonOutputContainer','outputContainer',$buttonOutputArea);
     
     $scriptLink='<script src="js/exercisesScripts.js"></script>';
     //echo '<h1>excercises front-end';
@@ -54,6 +58,7 @@
     $pageContents=''
             .$headLine
             .$metadataInputPanel
+            .$buttonAreaContainer
             .$scriptLink;
 
     echo $pageContents;

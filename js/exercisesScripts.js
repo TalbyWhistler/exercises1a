@@ -4,6 +4,7 @@ function exercisesInit()
 {
     console.log("exercises");
     attachStylesheet();
+    fetchRecordsForButtons();
 }
 
 
@@ -51,11 +52,37 @@ function handleMetadataSubmit()
     for(let i=0;i<ids.length;i++)
     {
         let thisId=ids[i];
-        document.getElementById(thisId).value='';
-       
+        document.getElementById(thisId).value='';      
     }
 }
 
+function fetchRecordsForButtons()
+{
+    callBackendEx("fetchRecordsList",'',printButtons);
+}
+
+function printButtons(data)
+{
+    console.log(data)
+    let buttonContent='';
+    for(let i=0;i<data.length;i++)
+    {
+        let figure=data[i]["figure"];
+        let title=data[i]["title"];
+        let button=
+        `
+            <button onClick="handleMetaButtons('${figure}')">${figure}${title?'|'+title:''}</button>
+        `;
+        buttonContent+=button;
+    }
+    document.getElementById("buttonOutputArea").innerHTML=buttonContent;
+}
+
+
+function handleMetaButtons(figure)
+{
+    console.log("Handle meta buttons figure",figure);
+}
 
 function writeToStatusEx(message)
 {
@@ -65,7 +92,8 @@ function writeToStatusEx(message)
 function transmitMetadataInputs(userInputs)
 {
    // console.log(userInputs);
-    callBackendEx('submitMetadata',userInputs,console.log);
+    callBackendEx('submitMetadata',userInputs,writeToStatusEx);
+    fetchRecordsForButtons();
 }
 
 
