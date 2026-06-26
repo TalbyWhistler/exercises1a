@@ -87,13 +87,18 @@ function handleMetaButtons(figure)
 function writeToStatusEx(message)
 {
     document.getElementById("metadataStatusIndicator").innerHTML=message;
+    if(message!="Invalid Input")
+    {
+         fetchRecordsForButtons();
+
+    }
 }
 
 function transmitMetadataInputs(userInputs)
 {
    // console.log(userInputs);
     callBackendEx('submitMetadata',userInputs,writeToStatusEx);
-    fetchRecordsForButtons();
+    
 }
 
 
