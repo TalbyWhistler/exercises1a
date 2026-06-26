@@ -31,6 +31,23 @@
                 $outputMessage=fetchRecordsList();
                 break;
             }
+        case("loadFigureDataAndMetadata"):
+            {
+                $params=$jsonInput["params"];
+                $figure=$params["figure"];
+                $outputMessage=getData($figure);
+                break;
+            }
+        case("submitData"):
+            {
+                $params=$jsonInput["params"];
+                $figure=$params["figure"];
+                $stepNumber=$params["stepNumber"];
+                $stepText=$params["stepText"];
+                $outputMessage="submitData has fired ".$figure.$stepNumber.$stepText;
+                $outputMessage=putData($figure,$stepNumber,$stepText);
+                break;
+            }
     }
     echo json_encode($outputMessage);
 ?>

@@ -51,14 +51,24 @@
 
     $buttonOutputArea=createElement('p','buttonOutputArea','outputArea','');
     $buttonAreaContainer=createElement('div','buttonOutputContainer','outputContainer',$buttonOutputArea);
+
     
+    $inputPanelArea=createElement('p','inputPanelArea','inputArea','');
+    $inputPanelAreaContainer=createElement('div','inputPanelContainer','panelContainer',$inputPanelArea);
+
     $scriptLink='<script src="js/exercisesScripts.js"></script>';
     //echo '<h1>excercises front-end';
-    $headLine=createElement('h1','exercisesTitle','title','Frontend!');
+    $headLine=createElement('h1','exercisesTitle','title','Exercises Data Input');
+
+    $dataSoFar=createElement('p','dataSoFarOutputArea','outputArea','');
+    $dataSoFarContainer=createElement('div','dataSoFarContainer','outputContainer',$dataSoFar);
+
     $pageContents=''
             .$headLine
             .$metadataInputPanel
             .$buttonAreaContainer
+            .$inputPanelAreaContainer
+            .$dataSoFar
             .$scriptLink;
 
     echo $pageContents;
